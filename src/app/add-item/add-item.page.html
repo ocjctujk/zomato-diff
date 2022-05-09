@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <!-- {{loadedItem.name}} -->
+    </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="onCancel()"> close </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-list-header> {{loadedItem.name}} </ion-list-header>
+        <ion-item> {{loadedItem.price | currency: 'INR'}} </ion-item>
+        <ion-radio-group value="regular" *ngIf="loadedItem.customization">
+          <ion-list-header class="small-header">
+            <ion-label>Customization</ion-label>
+          </ion-list-header>
+
+          <ion-item lines="none">
+            <ion-label>Regular</ion-label>
+            <ion-radio slot="start" value="regular"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Jain</ion-label>
+            <ion-radio slot="start" value="jain"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-col>
+      <ion-col>
+        <ion-img [src]="loadedItem.imageUrl"></ion-img>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="loadedItem.addOns.length>0">
+      <ion-col>
+        <ion-list>
+          <ion-list-header class="small-header">
+            <ion-label>Add ons</ion-label>
+          </ion-list-header>
+          <ion-item *ngFor="let addOn of loadedItem.addOns">
+            <ion-label>{{addOn.name}}</ion-label>
+            <ion-label slot="end">{{(addOn.price)*quantity | currency: 'INR'}}</ion-label>
+            <ion-checkbox slot="end" (ionChange)="onChange(addOn.price,checkbox.checked,addOn)" #checkbox></ion-checkbox>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-padding">
+      <ion-col size="6" class="ion-text-left">
+        <b><ion-label>Total</ion-label></b>
+      </ion-col>
+      <ion-col size="6" class="ion-text-right">
+        <b><ion-label>{{(loadedItem.price+totalOfAddOn)*quantity | currency:'INR'}}</ion-label></b>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="6">
+        <ion-grid class="ion-no-padding">
+          <ion-row>
+            <ion-col size="4">
+              <ion-button expand="block" (click)="increase()"> + </ion-button>
+            </ion-col>
+            <ion-col size="4">
+              <ion-button fill="clear"> {{quantity}} </ion-button>
+            </ion-col>
+            <ion-col size="4">
+              <ion-button expand="block" (click)="decrease()"> - </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button expand="block" (click)="onAdd()">Add</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
