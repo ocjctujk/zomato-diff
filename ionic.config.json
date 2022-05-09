@@ -1,0 +1,7 @@
+{
+  "name": "zomato-diff",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
