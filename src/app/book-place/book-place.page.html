@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Book a place</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="onClose()">
+        close
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-img [src]="selectedRestaurant.imageUrl[1]">
+
+        </ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item lines="none">
+            <h2>{{selectedRestaurant.name}}</h2>
+          </ion-item>
+          <ion-item>
+            <h4>{{selectedRestaurant.address}}</h4>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <ion-button (click)="increase()"> + </ion-button>
+        <ion-label> {{quantity}} </ion-label>
+        <ion-button (click)="decrease()"> - </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" (click)="onBookTable()">
+          Book table for {{quantity}}
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

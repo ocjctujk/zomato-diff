@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ModalController, NavController, ToastController } from '@ionic/angular';
+import { BookPlacePage } from 'src/app/book-place/book-place.page';
 import { FavouritesService } from '../favourites/favourites.service';
 import { Item } from '../menu.model';
 import { RestaurantService } from '../restaurant.service';
@@ -62,6 +63,17 @@ export class RestarantDiningPage implements OnInit {
     }
     console.log(item);
     
+  }
+
+  onBookPlace(){
+    this.modalCtrl.create({
+      component: BookPlacePage,
+      componentProps: {
+        restaurantId: this.id
+      }
+    }).then(modal=>{
+      modal.present();
+    })
   }
 
 }

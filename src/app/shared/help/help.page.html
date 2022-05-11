@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/profile"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <div *ngFor="let qa of qAnda; let i=index;" class="ion-margin-bottom">
+            <ion-item class="ion-text-wrap" lines="none" >
+              <b>{{qa.q}}</b>
+            </ion-item>
+            <ion-item>{{qa.a}}</ion-item>
+          </div>
+          
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

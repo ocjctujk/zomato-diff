@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rough.page.scss'],
 })
 export class RoughPage implements OnInit {
-
+  
   constructor() { }
 
   ngOnInit() {

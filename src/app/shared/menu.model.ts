@@ -49,9 +49,13 @@ export interface OrderItem{
     total: number;
 }
 
-
 export interface Favourite{
     item: Item;
     restaurantId: number
 
+}
+
+export interface Booking{
+    bookingRestaurantId: number,
+    person: number
 }

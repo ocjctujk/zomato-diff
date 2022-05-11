@@ -1,31 +1,23 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>rough</ion-title>
+    <ion-title>Rough</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-item lines="none">
-    <ion-label class="ion-text-wrap">Margeritta Pizza</ion-label>
-    <ion-label>{{240|currency:'INR'}}</ion-label>
-
-
-    
-          <ion-button slot="end" class="ion-no-margin">
-            +
-          </ion-button>
-          <ion-label slot="end" class="ion-no-margin">
-            5550
-          </ion-label>
-          <ion-button slot="end" class="ion-no-margin">
-            -
-          </ion-button>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <div>
+            <ion-item class="ion-text-wrap" lines="none">
+              <b>This is the first Question?</b>
+            </ion-item>
+            <ion-item> This is the first Answer. </ion-item>
+          </div>
           
-          
-
-  </ion-item>
-  <ion-item  class="ion-no-padding">
-    <ion-label slot="end">500Rs</ion-label>
-  </ion-item>
-
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

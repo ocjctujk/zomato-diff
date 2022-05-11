@@ -37,6 +37,22 @@ const routes: Routes = [
   {
     path: 'rough',
     loadChildren: () => import('./shared/rough-space/rough/rough.module').then( m => m.RoughPageModule)
+  },
+  {
+    path: 'about',
+    loadChildren: () => import('./shared/about/about.module').then( m => m.AboutPageModule)
+  },
+  {
+    path: 'help',
+    loadChildren: () => import('./shared/help/help.module').then( m => m.HelpPageModule)
+  },
+  {
+    path: 'book-place',
+    loadChildren: () => import('./book-place/book-place.module').then( m => m.BookPlacePageModule)
+  },
+  {
+    path: 'booking',
+    loadChildren: () => import('./shared/booking/booking.module').then( m => m.BookingPageModule)
   }
 ];
 @NgModule({

@@ -4,7 +4,7 @@
       <ion-back-button defaultHref="tabs/tab1"> </ion-back-button>
     </ion-buttons>
     <ion-title>
-      <ion-button fill="clear" routerLink="/tabs/tab3">
+      <ion-button color="primary" class="icon" fill="clear" routerLink="/tabs/tab3">
         <ion-icon slot="icon-only" name="bag"></ion-icon>
       </ion-button>
     </ion-title>
@@ -12,7 +12,7 @@
       
     </ion-buttons>-->
     <ion-buttons slot="primary">
-      <ion-button slot="primary">
+      <ion-button color="primary">
         <ion-icon slot="icon-only" name="share"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -70,7 +70,7 @@
                 <ion-img [src]="item.imageUrl" class="itemImage"></ion-img>
                 <ion-button
                   expand="block"
-                  color="danger"
+                  color="primary"
                   (click)="onAddItem(item.id)"
                   >Add</ion-button
                 >

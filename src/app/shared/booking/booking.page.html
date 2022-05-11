@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Booking</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/profile">
+      </ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+
+      <ion-col *ngIf="booking.person==0">
+        <ion-item lines="none">
+          <ion-label>No Bookings Yet</ion-label>
+        </ion-item>
+        <ion-button expand="block" routerLink="/tabs/tab2">Explore Hotels</ion-button>
+      </ion-col>
+
+      <ion-col *ngIf="booking.person!=0">
+        <div class="booking ion-padding">
+          <ion-item lines="none">
+            <ion-label class="ion-text-wrap">{{restaurant.name}}</ion-label>
+            <ion-label>{{booking.person}} person</ion-label>
+            <ion-label color="success">confirmed</ion-label>
+          </ion-item>
+          <ion-button expand="block" (click)="onCancelBooking()">
+            Cancel booking
+          </ion-button>
+        </div>
+        
+
+         
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

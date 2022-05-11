@@ -1,16 +1,48 @@
 <ion-content>
+
   <ion-row>
+    <ion-col>
+      <ion-item lines="none">
+        <ion-button slot="start" fill="clear">
+          <ion-icon name="location"></ion-icon>
+
+        </ion-button>
+        <ion-select
+          color="primary"
+          interface="action-sheet"
+          placeholder="Select One"
+          value="home"
+          class="ion-select"
+          
+        >
+          <ion-select-option value="home">Home</ion-select-option>
+          <ion-select-option value="office">Office</ion-select-option>
+          <ion-select-option value="Harsh's Home"
+            >Harsh's place</ion-select-option
+          >
+        </ion-select>
+        <ion-button fill="clear" size="large" routerLink="/profile" slot="end">
+          <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <!-- <ion-row>
+
+   
+
     <ion-col size="2" class="ion-no-margin ion-no-padding">
       <ion-button fill="clear">
         <ion-icon slot="icon-only" name="location"></ion-icon>
       </ion-button>
     </ion-col>
     <ion-col size="8">
-      <!-- <b>Home</b> -->
+      <b>Home</b>
 
       <ion-item lines="none">
-        <!-- Deliever to  -->
-        <!-- <ion-label>Home</ion-label> -->
+        Deliever to 
+        <ion-label>Home</ion-label>
         <ion-select
           color="primary"
           interface="action-sheet"
@@ -32,7 +64,7 @@
         <ion-icon slot="icon-only" name="person-circle"></ion-icon>
       </ion-button>
     </ion-col>
-  </ion-row>
+  </ion-row> -->
 
   
   <ion-row class="sticky-row">
