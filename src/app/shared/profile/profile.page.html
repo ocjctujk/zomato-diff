@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Profile</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1">
+
+      </ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-list-header>
+            Maharshi Gohel
+          </ion-list-header>
+          <ion-item>
+            007maharshigohel@gmail.com
+          </ion-item>
+        </ion-list>
+        <ion-list>
+          <ion-list-header>
+            <h4>FOOD ORDERS</h4>
+          </ion-list-header>
+          <ion-item routerLink="/tabs/tab4">
+            Your Orders
+          </ion-item>
+          <ion-item routerLink="/favourites">
+            Favourites
+          </ion-item>
+          <ion-item>
+            Address Book
+          </ion-item>
+          <ion-item>
+            Online Ordering Help
+          </ion-item>
+        </ion-list>
+
+        <ion-list>
+          <ion-list-header>
+            <h4>TABLE BOOKINGS</h4>
+          </ion-list-header>
+          <ion-item>
+            Your Bookings
+          </ion-item>
+          <ion-item>
+            Table Reservation Help
+          </ion-item>
+          <ion-item>
+            About
+          </ion-item>
+        </ion-list>
+
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="full">Logout</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+</ion-content>

@@ -1,0 +1,6 @@
+{
+	"appId": "io.zomato.com",
+	"appName": "zomato-diff",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

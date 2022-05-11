@@ -17,6 +17,26 @@ const routes: Routes = [
   {
     path: 'add-item',
     loadChildren: () => import('./add-item/add-item.module').then( m => m.AddItemPageModule)
+  },
+  {
+    path: 'list-view',
+    loadChildren: () => import('./shared/list-view/list-view.module').then( m => m.ListViewPageModule)
+  },
+  {
+    path: 'restarant-dining',
+    loadChildren: () => import('./shared/restarant-dining/restarant-dining.module').then( m => m.RestarantDiningPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./shared/profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'favourites',
+    loadChildren: () => import('./shared/favourites/favourites.module').then( m => m.FavouritesPageModule)
+  },
+  {
+    path: 'rough',
+    loadChildren: () => import('./shared/rough-space/rough/rough.module').then( m => m.RoughPageModule)
   }
 ];
 @NgModule({

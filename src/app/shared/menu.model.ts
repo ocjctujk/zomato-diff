@@ -13,6 +13,7 @@ export interface Item{
     customization: boolean; 
     // Customization is true if jain is available false if no jain is available
     addOns: addOns[]; 
+    favourite: boolean
 }
 export interface addOns{
     name: string;
@@ -27,7 +28,8 @@ export interface Restaurant{
     offers: string;
     itemCategory: ItemCategory[]; 
     details: string;
-    imageUrl: string;
+    imageUrl: string[];
+    rating: number;
 }
 
 export interface ItemCategory{
@@ -38,4 +40,18 @@ export interface ItemCategory{
 export interface cartItems{
     item: Item;
     quantity: number
+}
+
+export interface OrderItem{
+    item: cartItems[];
+    paymentStatus: boolean;
+    orderStatus: boolean;
+    total: number;
+}
+
+
+export interface Favourite{
+    item: Item;
+    restaurantId: number
+
 }

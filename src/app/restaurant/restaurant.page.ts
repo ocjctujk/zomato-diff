@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
 import { AddItemPage } from '../add-item/add-item.page';
+import { FavouritesService } from '../shared/favourites/favourites.service';
+import { Item } from '../shared/menu.model';
 import { RestaurantService } from '../shared/restaurant.service';
 
 @Component({
@@ -15,17 +17,19 @@ export class RestaurantPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private restaurantService: RestaurantService,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private favouriteService: FavouritesService,
+    private toastController: ToastController
   ) {}
+
+  
 
   ngOnInit() {
     this.id = +this.route.snapshot.paramMap.get('id');
-    console.log(this.restaurantService.getRestaurant(this.id));
     this.selectedRestaurant = this.restaurantService.getRestaurant(this.id);
   }
 
   onAddItem(id: number) {
-    console.log(id);
     this.modalCtrl.create({
       component: AddItemPage,
       componentProps: {id: id,restaurantId: this.id},
@@ -36,4 +40,28 @@ export class RestaurantPage implements OnInit {
       addItemPage.present();
     })
   }
+
+  onAddToFavourite(item:Item){
+    item.favourite = !item.favourite;
+    if(item.favourite){
+      this.favouriteService.addToFavourite(item,this.id);
+      this.toastController.create({
+        header: 'Item Added to favourites!',
+        duration: 2000
+      }).then(alert=>{
+        alert.present();
+      });
+    }
+    else{
+      this.favouriteService.removeFromFavourite(item);
+      this.toastController.create({
+        header: 'Item Removed From favourites!',
+        duration: 2000
+      }).then(alert=>{
+        alert.present();
+      });
+    }
+    
+  }
+
 }

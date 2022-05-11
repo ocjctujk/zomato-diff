@@ -35,4 +35,17 @@ export class CartService {
     }
     return false;
   }
+
+  removeItemFromCart(id){
+    this.cartItems = this.cartItems.filter((item) => {
+      return item.item.id != id;
+    });
+    this.cartItemSubject.next(this.cartItems);
+  }
+
+  clearCart(){
+    this.cartItems = [];
+    this.cartItemSubject.next(this.cartItems);
+  }
+
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
+import { toastController } from '@ionic/core';
 import { CartService } from '../cart.service';
 import { Item } from '../shared/menu.model';
 import { RestaurantService } from '../shared/restaurant.service';
@@ -18,17 +19,15 @@ export class AddItemPage implements OnInit {
   constructor(
     private modalCtrl: ModalController,
     private restaurantService: RestaurantService,
-    private cartService: CartService
+    private cartService: CartService,
+    private toastCtrl: ToastController
   ) {}
 
   ngOnInit() {
-    console.log(this.id);
-    console.log(this.restaurantId);
     this.loadedItem = this.restaurantService.getItem(
       this.id,
       this.restaurantId
     );
-    console.log(this.loadedItem);
   }
 
   onCancel() {
@@ -49,7 +48,6 @@ export class AddItemPage implements OnInit {
   }
 
   onChange(price: number, isChecked,addOn) {
-    console.log(isChecked);
     addOn.isChecked = isChecked;
     this.loadedItem.addOns.isChecked=true;
     if (isChecked) {
@@ -62,6 +60,11 @@ export class AddItemPage implements OnInit {
   onAdd() {
     this.cartService.addToCart(this.loadedItem,this.quantity);
     this.onCancel();
-    alert("Item added to cart");
+    this.toastCtrl.create({
+      header: 'Item Added !',
+      duration: 2000
+    }).then(alert=>{
+      alert.present();
+    });
   }
 }

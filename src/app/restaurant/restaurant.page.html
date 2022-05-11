@@ -3,10 +3,17 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="tabs/tab1"> </ion-back-button>
     </ion-buttons>
-    <!-- <ion-title>{{selectedRestaurant.name}}</ion-title> -->
+    <ion-title>
+      <ion-button fill="clear" routerLink="/tabs/tab3">
+        <ion-icon slot="icon-only" name="bag"></ion-icon>
+      </ion-button>
+    </ion-title>
+    <!-- <ion-buttons slot="primary">
+      
+    </ion-buttons>-->
     <ion-buttons slot="primary">
       <ion-button slot="primary">
-        <ion-icon slot="icon-only" name="search"></ion-icon>
+        <ion-icon slot="icon-only" name="share"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -20,8 +27,10 @@
         <p class="offer">{{selectedRestaurant.Offers}}</p>
         <p class="address">{{selectedRestaurant.address}}</p>
       </ion-col>
-      <ion-col size="2">
-        <p>4.5</p>
+      <ion-col size="2" class="ion-no-margin ion-no-padding">
+        <ion-button color="success" fill="clear" class="ion-text-wrap"
+          >{{selectedRestaurant.rating}}⭐</ion-button
+        >
       </ion-col>
     </ion-row>
     <ion-row>
@@ -44,14 +53,18 @@
                 <p class="item-price">{{item.price | currency:'INR'}}</p>
                 <p class="item-details">{{item.details}}</p>
                 <ion-item lines="none" class="icon-item">
+                  <ion-button fill="clear" (click)="onAddToFavourite(item)">
+                    <ion-icon
+                      *ngIf="!item.favourite"
+                      name="heart-outline"
+                    ></ion-icon>
+                    <ion-icon *ngIf="item.favourite" name="heart"></ion-icon>
+                  </ion-button>
+
                   <ion-button fill="clear"
-                  ><ion-icon name="heart-outline"></ion-icon
-                ></ion-button>
-                <ion-button fill="clear"
-                  ><ion-icon name="share-outline"></ion-icon
-                ></ion-button>
+                    ><ion-icon name="share-outline"></ion-icon
+                  ></ion-button>
                 </ion-item>
-               
               </ion-col>
               <ion-col size="3">
                 <ion-img [src]="item.imageUrl" class="itemImage"></ion-img>
