@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, NavController } from '@ionic/angular';
 import { CartService } from '../cart.service';
+import { AddressService } from '../shared/address-book/address.service';
 import { cartItems, Item } from '../shared/menu.model';
 import { OrderService } from '../shared/order.service';
+import { WalletService } from '../tab5/wallet.service';
 
 @Component({
   selector: 'app-tab3',
@@ -12,11 +14,15 @@ import { OrderService } from '../shared/order.service';
 export class Tab3Page implements OnInit {
   cartItems: cartItems[];
   itemTotal = 0;
+  delieveryAddress;
+  paymentMethod = 'wallet';
   constructor(
     private cartService: CartService,
     private alertCtrl: AlertController,
     private orderService: OrderService,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private addressService: AddressService,
+    private walletService: WalletService
   ) {}
 
   ngOnInit(): void {
@@ -34,6 +40,10 @@ export class Tab3Page implements OnInit {
         }
         this.itemTotal += (addOnMoney + item.item.price) * item.quantity;
       }
+    });
+
+    this.addressService.selectedAddressSubject.subscribe((address) => {
+      this.delieveryAddress = address;
     });
   }
 
@@ -90,23 +100,62 @@ export class Tab3Page implements OnInit {
   }
 
   onPay() {
-    this.orderService.addOrderItem(this.cartItems, true, true, this.itemTotal);
-    this.cartItems = [];
-    this.itemTotal = 0;
-    this.cartService.clearCart();
-    this.alertCtrl
-      .create({
-        message: 'Order Placed!',
-        buttons: [
-          {
-            text: 'Ok',
-            handler: ()=>{ this.navCtrl.navigateForward('tabs/tab4');}
-          },
-        ],
-      })
-      .then((alrt) => {
-        alrt.present();
-       
-      });
+    let difference=0;
+    if(this.paymentMethod=='wallet'){
+      difference = this.walletService.deductMoney(
+        this.itemTotal + this.itemTotal * 0.18
+      );
+    }
+    
+    console.log(this.itemTotal + this.itemTotal * 0.18)
+    console.log(difference);
+    console.log(this.paymentMethod);
+    if (difference<0) {
+      this.alertCtrl
+        .create({
+          header: 'Not enough money.Please add '+Math.abs(difference).toFixed(2)+' to wallet to order Items',
+          buttons: [
+            {
+              text: 'Add money',
+              handler: () => {},
+            },
+            {
+              text: 'Back',
+              role: 'Cancel',
+            },
+          ],
+        })
+        .then((alert) => {
+          alert.present();
+          return;
+        });
+    }
+    //Code below this only should execute when balance is enough.
+    if (difference>=0) {
+      this.orderService.addOrderItem(
+        this.cartItems,
+        true,
+        true,
+        this.itemTotal
+      );
+      this.cartItems = [];
+      this.itemTotal = 0;
+      this.cartService.clearCart();
+      this.alertCtrl
+        .create({
+          message: 'Order Placed!',
+          buttons: [
+            {
+              text: 'Ok',
+              handler: () => {
+                this.navCtrl.navigateForward('tabs/tab4');
+              },
+            },
+          ],
+        })
+        .then((alrt) => {
+          alrt.present();
+        });
+    }
   }
 }

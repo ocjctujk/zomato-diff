@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController, NavController } from '@ionic/angular';
+import { AddressService } from '../shared/address-book/address.service';
 import { ListViewPage } from '../shared/list-view/list-view.page';
+import { Address } from '../shared/menu.model';
 import { RestaurantService } from '../shared/restaurant.service';
 
 @Component({
@@ -12,7 +14,8 @@ import { RestaurantService } from '../shared/restaurant.service';
 export class Tab1Page implements OnInit {
   categories = ["Popular Restaurants","Featured","Legacy"]
   restaurants = [];
-
+  addresses:Address[];
+  selectedAddress:Address;
   slideOpts = {
     freeMode: true,
     slidesPerView: 3.5,
@@ -26,7 +29,8 @@ export class Tab1Page implements OnInit {
   constructor(
     private navCtrl: NavController,
     private restaurantService: RestaurantService,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private addressService: AddressService
   ) {}
 
   onSelectItem(id: number) {
@@ -37,6 +41,12 @@ export class Tab1Page implements OnInit {
     this.restaurantService.getRestaurants().subscribe((restaurant) => {
       this.restaurants = [...restaurant];
     });
+    this.addressService.addressSubject.subscribe(address=>{
+      this.addresses = address;
+    });
+    this.addressService.selectedAddressSubject.subscribe(data=>{
+      this.selectedAddress = data;
+    })
   }
   onSeeAll(){
     console.log("See all");
@@ -50,4 +60,17 @@ export class Tab1Page implements OnInit {
       listViewPage.present();
     })
   }
+
+  onOptionSelect(select){
+    console.log(select.value);
+    const fetchAddressByName = this.addresses.filter(data=>{
+      return data.title === select.value;
+    })[0];
+    this.addressService.setSelectedAddress(fetchAddressByName.id);
+
+  }
+  // onChange(id: number){
+  //   console.log("called"+id);
+  //   this.addressService.setSelectedAddress(id);
+  // }
 }

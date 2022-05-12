@@ -26,7 +26,9 @@ export class RestaurantPage implements OnInit {
 
   ngOnInit() {
     this.id = +this.route.snapshot.paramMap.get('id');
+    // console.log(this.id);
     this.selectedRestaurant = this.restaurantService.getRestaurant(this.id);
+    
   }
 
   onAddItem(id: number) {

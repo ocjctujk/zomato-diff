@@ -5,7 +5,8 @@
     </ion-buttons>
     <ion-title>
       <ion-button color="primary" class="icon" fill="clear" routerLink="/tabs/tab3">
-        <ion-icon slot="icon-only" name="bag"></ion-icon>
+        <ion-icon class="bag-item" slot="icon-only" name="bag"></ion-icon>
+        <!-- <ion-badge slot="start">5</ion-badge> -->
       </ion-button>
     </ion-title>
     <!-- <ion-buttons slot="primary">
@@ -20,7 +21,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid>
+  <ion-grid *ngIf="selectedRestaurant">
     <ion-row>
       <ion-col size="10">
         <h3 class="name">{{selectedRestaurant.name}}</h3>

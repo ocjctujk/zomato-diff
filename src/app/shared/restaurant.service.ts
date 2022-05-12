@@ -8,7 +8,7 @@ import { Menu, Restaurant } from './menu.model';
 export class RestaurantService {
   _restaurant: Restaurant[] = [
     {
-      id: Math.random(),
+      id: 1,
       name: "Domino'z Pizza",
       address: 'Sigma Icon, Shyamal Char Rasta, Ahmedabad, Gujarat 380015',
       offers: '50% off',
@@ -83,7 +83,7 @@ export class RestaurantService {
       rating: 3.9,
     },
     {
-      id: Math.random(),
+      id: 2,
       name: 'Mc Donalds',
       address: 'Center Mall, Panchavati Society, Gulbai Tekra,',
       offers: '30% off',
@@ -156,7 +156,7 @@ export class RestaurantService {
       rating: 4.9,
     },
     {
-      id: Math.random(),
+      id: 3,
       name: 'Subway',
       address: 'Max Complex, Navrangpura, Panchavati',
       offers: '15% off',
@@ -229,7 +229,7 @@ export class RestaurantService {
       rating: 4.7,
     },
     {
-      id: Math.random(),
+      id: 4,
       name: 'Burger King',
       address: 'Gurukul, Ahmedabad.',
       offers: '40% off',
@@ -300,7 +300,7 @@ export class RestaurantService {
       rating: 4.2,
     },
     {
-      id: Math.random(),
+      id: 5,
       name: 'Taco Bell',
       address: 'Ahmedabad One Mall, Vastrapur, Ahmedabad',
       offers: '25% off',

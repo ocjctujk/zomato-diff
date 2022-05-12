@@ -59,3 +59,9 @@ export interface Booking{
     bookingRestaurantId: number,
     person: number
 }
+
+export interface Address{
+    id: number;
+    title: string;
+    address: string;
+}

@@ -10,16 +10,16 @@
         <ion-select
           color="primary"
           interface="action-sheet"
-          placeholder="Select One"
-          value="home"
+          placeholder="Select address"
+          [value]="selectedAddress.title"
           class="ion-select"
-          
+          #select
+          (ionChange)="onOptionSelect(select)"
         >
-          <ion-select-option value="home">Home</ion-select-option>
-          <ion-select-option value="office">Office</ion-select-option>
-          <ion-select-option value="Harsh's Home"
-            >Harsh's place</ion-select-option
-          >
+          <ion-select-option *ngFor="let address of addresses" [value]="address.title">
+            <ion-text>{{address.title}}</ion-text>
+            
+          </ion-select-option>
         </ion-select>
         <ion-button fill="clear" size="large" routerLink="/profile" slot="end">
           <ion-icon slot="icon-only" name="person-circle"></ion-icon>

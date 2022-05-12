@@ -1,9 +1,69 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>tab5</ion-title>
+    <ion-title>Wallet</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item color="primary" lines="none">
+          <ion-label class="ion-padding">Wallet Money</ion-label>
+          <ion-label slot="end" class="currency"
+            >{{balance|currency:'INR'}}</ion-label
+          >
+        </ion-item>
+      </ion-col>
+      <ion-col size="12" *ngIf="!paymentMethod">
+        <ion-button expand="block" (click)="onAddMoney()"
+          >Add Money to Wallet</ion-button
+        >
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="paymentMethod">
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Amount</ion-label>
+          <ion-input
+            type="number"
+            min="0"
+            max="10000"
+            [(ngModel)]="amount"
+          ></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="paymentMethod">
+      <ion-col class="ion-margin">
+        <ion-chip (click)="changeAmount(500)">{{500|currency:'INR'}}</ion-chip>
+        <ion-chip (click)="changeAmount(1000)"
+          >{{1000|currency:'INR'}}</ion-chip
+        >
+        <ion-chip (click)="changeAmount(1500)"
+          >{{1500|currency:'INR'}}</ion-chip
+        >
+        <ion-chip (click)="changeAmount(2000)"
+          >{{2000|currency:'INR'}}</ion-chip
+        >
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button
+          expand="block"
+          *ngIf="paymentMethod"
+          [disabled]="amount<=0 || amount>=10000"
+          (click)="onPayMoney()"
+        >
+          Add {{amount|currency:'INR'}} from {{paymentMethod}}
+        </ion-button>
+      </ion-col>
+      <ion-col *ngIf="paymentMethod">
+        <ion-button expand="block" (click)="onAddMoney()"
+          >Change payment method</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

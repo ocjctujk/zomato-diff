@@ -53,6 +53,10 @@ const routes: Routes = [
   {
     path: 'booking',
     loadChildren: () => import('./shared/booking/booking.module').then( m => m.BookingPageModule)
+  },
+  {
+    path: 'address-book',
+    loadChildren: () => import('./shared/address-book/address-book.module').then( m => m.AddressBookPageModule)
   }
 ];
 @NgModule({

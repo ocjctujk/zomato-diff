@@ -98,10 +98,10 @@
 
     <ion-row>
       <ion-col>
-        <ion-list-header>Delivering at Maharshi's Home</ion-list-header>
+        <ion-list-header>Delivering at {{delieveryAddress.title}}</ion-list-header>
         <ion-item lines="none">
           <ion-label class="ion-text-wrap">
-            A-304, Shrinandanagar-3, Vejalpur, Ahmedabad.
+            {{delieveryAddress.address}}
           </ion-label>
         </ion-item>
       </ion-col>
@@ -113,9 +113,9 @@
           <ion-select
             #payment
             placeholder="Select One"
-            value="paytm"
-            placeholder=""
+            [(ngModel)]="paymentMethod"
           >
+          <ion-select-option value="wallet">Wallet</ion-select-option>
             <ion-select-option value="paytm">Paytm</ion-select-option>
             <ion-select-option value="gpay">Gpay</ion-select-option>
             <ion-select-option value="cash">Cash</ion-select-option>
