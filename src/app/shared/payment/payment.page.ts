@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { alertController, modalController } from '@ionic/core';
+import { alertController } from '@ionic/core';
 
 @Component({
-  selector: 'app-rough',
-  templateUrl: './rough.page.html',
-  styleUrls: ['./rough.page.scss'],
+  selector: 'app-payment',
+  templateUrl: './payment.page.html',
+  styleUrls: ['./payment.page.scss'],
 })
-export class RoughPage implements OnInit {
+export class PaymentPage implements OnInit {
+
   pin: number[] = [];
   correctPin = '1234';
   constructor(private modalCtrl: ModalController) {}
@@ -24,12 +25,16 @@ export class RoughPage implements OnInit {
     this.pin.pop();
   }
   onGo() {
-    console.log(this.convertArraytToDecimal(this.pin));
+  
     if (this.convertArraytToDecimal(this.pin) === 1234) {
-      modalController.dismiss(true);
+      this.modalCtrl.dismiss(true);
     } else {
+      let errorMessage = 'Wrong pin.Please try again.'
+      if(this.pin.length!=4){
+        errorMessage+=' Pin should be 4 digit long.'
+      }
       alertController.create({
-        header: 'Wrong Pin. Please try again',
+        header: errorMessage,
         buttons: [
           {
             text: 'Okay',
@@ -51,4 +56,5 @@ export class RoughPage implements OnInit {
     }
     return number;
   }
+
 }

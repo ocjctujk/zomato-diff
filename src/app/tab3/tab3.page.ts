@@ -1,10 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController, NavController } from '@ionic/angular';
+import {
+  AlertController,
+  ModalController,
+  NavController,
+} from '@ionic/angular';
+import { modalController } from '@ionic/core';
 import { CartService } from '../cart.service';
 import { AddressService } from '../shared/address-book/address.service';
 import { cartItems, Item } from '../shared/menu.model';
 import { OrderService } from '../shared/order.service';
+import { PaymentPage } from '../shared/payment/payment.page';
 import { WalletService } from '../tab5/wallet.service';
 
 @Component({
@@ -24,6 +30,7 @@ export class Tab3Page implements OnInit {
     private navCtrl: NavController,
     private addressService: AddressService,
     private walletService: WalletService,
+    private modalCtrl: ModalController
   ) {}
 
   ngOnInit(): void {
@@ -100,25 +107,72 @@ export class Tab3Page implements OnInit {
     return price;
   }
 
-  onPay() {
-    let difference=0;
-    if(this.paymentMethod=='wallet'){
+  async onPay() {
+    if (this.paymentMethod != 'wallet' && this.paymentMethod !='cash') {
+      const modal = await this.modalCtrl.create({
+        component: PaymentPage,
+      });
+      await modal.present();
+
+      await modal.onDidDismiss().then((data) => {
+        console.log(data.data);
+        if (data.data) {
+          this.orderService.addOrderItem(
+            this.cartItems,
+            true,
+            true,
+            this.itemTotal
+          );
+          this.cartItems = [];
+          this.itemTotal = 0;
+          this.cartService.clearCart();
+          this.alertCtrl
+            .create({
+              message: 'Order Placed!',
+              buttons: [
+                {
+                  text: 'Ok',
+                  handler: () => {
+                    this.navCtrl.navigateForward('tabs/tab4');
+                  },
+                },
+              ],
+            })
+            .then((alrt) => {
+              alrt.present();
+            });
+        }
+      });
+    }
+
+    let difference = 0;
+
+    if(this.paymentMethod=='cash'){
+      
+    }
+
+    if (this.paymentMethod == 'wallet') {
       difference = this.walletService.deductMoney(
         this.itemTotal + this.itemTotal * 0.18
       );
     }
-    
-    console.log(this.itemTotal + this.itemTotal * 0.18)
+
+    console.log(this.itemTotal + this.itemTotal * 0.18);
     console.log(difference);
     console.log(this.paymentMethod);
-    if (difference<0) {
+    if (difference < 0) {
       this.alertCtrl
         .create({
-          header: 'Not enough money.Please add '+Math.abs(difference).toFixed(2)+' to wallet to order Items',
+          header:
+            'Not enough money.Please add ' +
+            Math.abs(difference).toFixed(2) +
+            ' to wallet to order Items',
           buttons: [
             {
               text: 'Add money',
-              handler: () => {  this.navCtrl.navigateForward('/tabs/tab5') },
+              handler: () => {
+                this.navCtrl.navigateForward('/tabs/tab5');
+              },
             },
             {
               text: 'Back',
@@ -132,7 +186,7 @@ export class Tab3Page implements OnInit {
         });
     }
     //Code below this only should execute when balance is enough.
-    if (difference>=0) {
+    if (difference >= 0 && (this.paymentMethod == 'wallet' || this.paymentMethod=='cash')) {
       this.orderService.addOrderItem(
         this.cartItems,
         true,

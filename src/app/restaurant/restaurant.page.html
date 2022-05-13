@@ -21,34 +21,58 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid *ngIf="selectedRestaurant">
+  <ion-grid class="ion-no-margin ion-no-padding">
     <ion-row>
-      <ion-col size="10">
-        <h3 class="name">{{selectedRestaurant.name}}</h3>
-        <p class="offer">{{selectedRestaurant.Offers}}</p>
-        <p class="address">{{selectedRestaurant.address}}</p>
+      <ion-col size-md="10" offset-md="1">
+        <ion-item lines="none">
+          <ion-label class="name">{{selectedRestaurant.name}} </ion-label>
+          <!-- <h3 class="name">{{selectedRestaurant.name}}</h3> -->
+          <ion-label slot="end">
+             <b>{{selectedRestaurant.rating}}⭐</b> 
+          </ion-label>
+          <ion-label slot="end">
+
+          </ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label class="address ion-text-wrap">{{selectedRestaurant.address}}</ion-label>
+          
+        </ion-item>
+        <!-- <ion-label class="name">{{selectedRestaurant.name}} </ion-label>
+        <h3 class="name">{{selectedRestaurant.name}}</h3> -->
+        <!-- <ion-label slot="end">{{selectedRestaurant.rating}}⭐</ion-label> --> 
+        <!-- <ion-button color="success" fill="clear" class="ion-text-wrap"
+          >{{selectedRestaurant.rating}}⭐</ion-button
+        > -->
+        <!-- <p class="offer">{{selectedRestaurant.Offers}}</p> -->
+        
       </ion-col>
-      <ion-col size="2" class="ion-no-margin ion-no-padding">
+      <!-- <ion-col size="2" class="ion-no-margin ion-no-padding">
         <ion-button color="success" fill="clear" class="ion-text-wrap"
           >{{selectedRestaurant.rating}}⭐</ion-button
         >
-      </ion-col>
+      </ion-col> -->
     </ion-row>
     <ion-row>
-      <ion-chip>
-        <ion-label class="offer">{{selectedRestaurant.offers}}</ion-label>
-      </ion-chip>
+      <ion-col size-md="10" offset-md="1">
+        <ion-chip>
+          <ion-label class="offer">{{selectedRestaurant.offers}}</ion-label>
+        </ion-chip>
+      </ion-col>
+      
     </ion-row>
     <ion-row *ngFor="let category of selectedRestaurant.itemCategory">
-      <ion-col size="12">
+      <ion-col size-md="10" offset-md="1">
         <ion-item>
           <h5 class="categoryname">{{category.name}}</h5>
         </ion-item>
+        
       </ion-col>
-      <ion-col size="12" *ngFor="let item of category.items">
+      
+      <ion-col size="12" *ngFor="let item of category.items"  size-md="4.5" offset-md="1">
         <ion-item>
           <ion-grid class="ion-no-padding ion-no-margin">
-            <ion-row>
+            <ion-row class="ion-margin">
               <ion-col size="9" class="item-column">
                 <p class="item-name">{{item.name}}</p>
                 <p class="item-price">{{item.price | currency:'INR'}}</p>

@@ -65,3 +65,11 @@ export interface Address{
     title: string;
     address: string;
 }
+
+
+export interface searchItem{
+    name: string;
+    itemId?: number;
+    restaurantId: number;
+    type: 'restaurant'|'food';
+}

@@ -1,22 +1,25 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="primary">
-      <ion-button (click)="closeModal()">close</ion-button>
+    <ion-buttons slot="start">
+      <!-- <ion-button (click)="closeModal()">close</ion-button> -->
+      <ion-back-button defaultHref="/tabs/tab1">
+
+      </ion-back-button>
     </ion-buttons>
+   
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col size="12" *ngFor="let restaurant of restaurants">
-
+  <ion-grid class="ion-no-margin ion-no-padding">
+    <ion-row class="ion-margin">
+      <ion-col size="12" *ngFor="let restaurant of restaurants" size-md="3">
         <ion-card button="true" (click)="onOpenRestaurant(restaurant.id)">
-          <ion-img [src]="restaurant.imageUrl[0]"></ion-img>
+          <ion-img [src]="restaurant.imageUrl[1]"></ion-img>
           <ion-card-header>
             <ion-card-subtitle class="ion-margin-top">{{restaurant.address}}</ion-card-subtitle>
-            <ion-card-title>{{restaurant.name}}</ion-card-title>
+            <ion-card-title><b>{{restaurant.name}}</b></ion-card-title>
           </ion-card-header>
         
           <ion-card-content>

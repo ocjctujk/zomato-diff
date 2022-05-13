@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Menu, Restaurant } from './menu.model';
+import { Menu, Restaurant, searchItem } from './menu.model';
 
 @Injectable({
   providedIn: 'root',
@@ -391,5 +391,24 @@ export class RestaurantService {
       })[0];
     }
     return item;
+  }
+  getItemNames(key: string) {
+    key=key.toLowerCase();
+    let names: searchItem[]=[];
+    for (let restaurant of this._restaurant) {
+      if (restaurant.name.toLowerCase().includes(key)) {
+        names.push({name: restaurant.name,restaurantId: restaurant.id,type: 'restaurant'});
+      }
+      for (let category of restaurant.itemCategory) {
+        for (let item of category.items) {
+        
+            if (item.name.toLowerCase().includes(key)) {
+              names.push({name: item.name,restaurantId: restaurant.id,type:'food',itemId: item.id});
+            }
+          
+        }
+      }
+    }
+    return names;
   }
 }

@@ -10,7 +10,7 @@ import { BookingService } from './booking.service';
   styleUrls: ['./book-place.page.scss'],
 })
 export class BookPlacePage implements OnInit {
-  restaurantId;
+  restaurantId=1;
   selectedRestaurant;
   quantity = 2;
   constructor(

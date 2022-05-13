@@ -20,12 +20,12 @@ export class ListViewPage implements OnInit {
       this.restaurants = [...restaurant];
     });
   }
-  closeModal() {
-    this.modalCtrl.dismiss();
-  }
+  // closeModal() {
+  //   this.modalCtrl.dismiss();
+  // }
 
   onOpenRestaurant(id: number) {
     this.navCtrl.navigateForward('/restaurant/'+id);
-    this.modalCtrl.dismiss();
+    // this.modalCtrl.dismiss();
   }
 }

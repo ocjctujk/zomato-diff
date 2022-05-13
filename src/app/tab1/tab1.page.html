@@ -67,10 +67,23 @@
   </ion-row> -->
 
   <ion-row class="sticky-row">
-    <ion-col size="12" class="ion-no-padding" size-md="10" offset-md="1">
+    <ion-col size="12" class="ion-no-padding" size-md="9" offset-md="1.5">
       <ion-searchbar
+        #searchbar
         placeholder="Dishes, Restaurants and Offers"
+        (ionChange)="onSearch(searchbar.value)"
       ></ion-searchbar>
+      <ion-list *ngIf="searchResult">
+        <ion-item *ngFor="let item of searchResult" (click)="onSelectItem(item.restaurantId)" button="true">
+          <ion-label class="ion-text-wrap">
+            {{item.name}}&nbsp;<span *ngIf="item.type=='food'"> From {{ restaurantService.getRestaurant(item.restaurantId).name}}</span>
+          </ion-label>
+          <ion-img *ngIf="item.type=='restaurant'" [src]="restaurantService.getRestaurant(item.restaurantId).imageUrl[0]">
+          </ion-img>
+          <ion-img *ngIf="item.type=='food'" [src]="restaurantService.getItem(item.itemId,item.restaurantId).imageUrl">
+          </ion-img>
+        </ion-item>
+      </ion-list>
     </ion-col>
     <!-- <ion-col size="2" class="ion-no-padding">
       <ion-button fill="clear">
@@ -82,9 +95,9 @@
   <ion-row *ngFor="let category of categories">
     <!-- CODE BELOW -->
 
-    <ion-col size-md="10" offset-md="1">
+    <ion-col size-md="10" offset-md="1" class="ion-no-margin ion-no-padding">
       <ion-item lines="none">
-        <ion-label style="margin-left: 16px"> <b>{{category}}</b> </ion-label>
+        <ion-label style="margin-left: 16px" class="ion-no-padding ion-no-margin"> <b>{{category}}</b> </ion-label>
         <ion-label
           class="ion-text-end pointer"
           slot="end"

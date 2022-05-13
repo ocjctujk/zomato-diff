@@ -57,6 +57,10 @@ const routes: Routes = [
   {
     path: 'address-book',
     loadChildren: () => import('./shared/address-book/address-book.module').then( m => m.AddressBookPageModule)
+  },
+  {
+    path: 'payment',
+    loadChildren: () => import('./shared/payment/payment.module').then( m => m.PaymentPageModule)
   }
 ];
 @NgModule({

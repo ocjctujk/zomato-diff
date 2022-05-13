@@ -10,17 +10,14 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid>
+  <ion-grid *ngIf="selectedRestaurant">
     <ion-row>
       <ion-col>
         <ion-img [src]="selectedRestaurant.imageUrl[1]">
-
         </ion-img>
       </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-list>
+      <ion-col class="ion-no-padding ion-text-center">
+        <ion-list class="ion-no-padding">
           <ion-item lines="none">
             <h2>{{selectedRestaurant.name}}</h2>
           </ion-item>
@@ -28,21 +25,19 @@
             <h4>{{selectedRestaurant.address}}</h4>
           </ion-item>
         </ion-list>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col class="ion-text-center">
         <ion-button (click)="increase()"> + </ion-button>
         <ion-label> {{quantity}} </ion-label>
         <ion-button (click)="decrease()"> - </ion-button>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
         <ion-button expand="block" (click)="onBookTable()">
           Book table for {{quantity}}
         </ion-button>
       </ion-col>
     </ion-row>
+    <!-- <ion-row>
+      <ion-col class="ion-text-center">
+        
+      </ion-col>
+    </ion-row> -->
+    
   </ion-grid>
 </ion-content>
