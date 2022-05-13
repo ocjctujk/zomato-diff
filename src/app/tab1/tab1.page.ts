@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalController, NavController } from '@ionic/angular';
+import { ModalController, NavController, Platform } from '@ionic/angular';
 import { AddressService } from '../shared/address-book/address.service';
 import { ListViewPage } from '../shared/list-view/list-view.page';
 import { Address } from '../shared/menu.model';
@@ -19,18 +19,45 @@ export class Tab1Page implements OnInit {
   slideOpts = {
     freeMode: true,
     slidesPerView: 3.5,
-    spaceBetween: 10,
-    offsetBefore: 11,
+    // spaceBetween: 10,
+    // offsetBefore: 11,
     initialSlide: 0,
     speed: 400,
   };
+
+  getSlidePerview(){  
+    if(this.platform.width()>767){
+      this.slideOpts.slidesPerView=7;
+    }
+    console.log("PWA "+this.platform.is('pwa'));
+    console.log("Android "+this.platform.is('android'));
+    console.log("Capacitor "+this.platform.is('capacitor'));
+    console.log("Cordova "+this.platform.is('cordova'));
+    console.log("Desktop "+this.platform.is('desktop'));
+    console.log("Electron "+this.platform.is('electron'));
+    console.log("Hybrid "+this.platform.is('hybrid'));
+    console.log("IOS "+this.platform.is('ios'));
+    console.log("I Pad "+this.platform.is('ipad'));
+    console.log("PWA "+this.platform.is('iphone'));
+    console.log("Mobile "+this.platform.is('mobile'));
+    console.log("Mobile Web "+this.platform.is('mobileweb'));
+    console.log("Phablet "+this.platform.is('phablet'));
+    console.log("Tablet "+this.platform.is('tablet'));
+
+
+
+    if(this.platform.is('desktop')){
+     
+    }
+  }
   
 
   constructor(
     private navCtrl: NavController,
     private restaurantService: RestaurantService,
     private modalCtrl: ModalController,
-    private addressService: AddressService
+    private addressService: AddressService,
+    private platform: Platform
   ) {}
 
   onSelectItem(id: number) {
@@ -38,6 +65,7 @@ export class Tab1Page implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getSlidePerview();
     this.restaurantService.getRestaurants().subscribe((restaurant) => {
       this.restaurants = [...restaurant];
     });

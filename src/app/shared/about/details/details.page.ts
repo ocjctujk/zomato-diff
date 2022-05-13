@@ -28,6 +28,7 @@ export class DetailsPage implements OnInit {
         break;
       case 'lar':this.title="Licenses and Registrations";
         break;
+      case 'dev': this.title='Developer'
       default: 
         break;
     }

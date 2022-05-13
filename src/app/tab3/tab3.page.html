@@ -7,7 +7,7 @@
 <ion-content>
   <ion-grid>
     <ion-row *ngIf="cartItems.length<=0">
-      <ion-col>
+      <ion-col size-md="6" offset-md="3">
         <ion-item lines="none">
           <ion-label>No items in cart</ion-label>
         </ion-item>
@@ -17,7 +17,7 @@
       </ion-col>
     </ion-row>
     <ion-row *ngIf="cartItems.length>0">
-      <ion-col>
+      <ion-col size-md="6" offset-md="3">
         <ion-list >
           <ion-list-header>Your order</ion-list-header>
           <div *ngFor="let item of cartItems">
@@ -97,7 +97,7 @@
     </ion-row>
 
     <ion-row>
-      <ion-col>
+      <ion-col size-md="6" offset-md="3">
         <ion-list-header>Delivering at {{delieveryAddress.title}}</ion-list-header>
         <ion-item lines="none">
           <ion-label class="ion-text-wrap">
@@ -107,7 +107,7 @@
       </ion-col>
     </ion-row>
     <ion-row *ngIf="cartItems.length>0">
-      <ion-col size="12">
+      <ion-col size="12" size-md="6" offset-md="3">
         <ion-item lines="none">
           <ion-label>Payment methods</ion-label>
           <ion-select
@@ -122,7 +122,7 @@
           </ion-select>
         </ion-item>
       </ion-col>
-      <ion-col size="12">
+      <ion-col size="12" size-md="6" offset-md="3">
         <ion-button expand="block" (click)="onPay()"
           >Pay {{(itemTotal+itemTotal*0.18)|currency:'INR'}} using
           {{payment.value}}</ion-button

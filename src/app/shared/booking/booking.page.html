@@ -12,14 +12,14 @@
   <ion-grid>
     <ion-row>
 
-      <ion-col *ngIf="booking.person==0">
+      <ion-col *ngIf="booking.person==0" size-md="10" offset-md="1">
         <ion-item lines="none">
           <ion-label>No Bookings Yet</ion-label>
         </ion-item>
         <ion-button expand="block" routerLink="/tabs/tab2">Explore Hotels</ion-button>
       </ion-col>
 
-      <ion-col *ngIf="booking.person!=0">
+      <ion-col *ngIf="booking.person!=0" size-md="6" offset-md="3">
         <div class="booking ion-padding">
           <ion-item lines="none">
             <ion-label class="ion-text-wrap">{{restaurant.name}}</ion-label>

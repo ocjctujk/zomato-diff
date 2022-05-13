@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AlertController, NavController } from '@ionic/angular';
 import { CartService } from '../cart.service';
 import { AddressService } from '../shared/address-book/address.service';
@@ -22,7 +23,7 @@ export class Tab3Page implements OnInit {
     private orderService: OrderService,
     private navCtrl: NavController,
     private addressService: AddressService,
-    private walletService: WalletService
+    private walletService: WalletService,
   ) {}
 
   ngOnInit(): void {
@@ -117,7 +118,7 @@ export class Tab3Page implements OnInit {
           buttons: [
             {
               text: 'Add money',
-              handler: () => {},
+              handler: () => {  this.navCtrl.navigateForward('/tabs/tab5') },
             },
             {
               text: 'Back',

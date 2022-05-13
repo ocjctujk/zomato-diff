@@ -1,11 +1,9 @@
 <ion-content>
-
   <ion-row>
-    <ion-col>
+    <ion-col size-md="10" offset-md="1">
       <ion-item lines="none">
         <ion-button slot="start" fill="clear">
           <ion-icon name="location"></ion-icon>
-
         </ion-button>
         <ion-select
           color="primary"
@@ -16,9 +14,11 @@
           #select
           (ionChange)="onOptionSelect(select)"
         >
-          <ion-select-option *ngFor="let address of addresses" [value]="address.title">
+          <ion-select-option
+            *ngFor="let address of addresses"
+            [value]="address.title"
+          >
             <ion-text>{{address.title}}</ion-text>
-            
           </ion-select-option>
         </ion-select>
         <ion-button fill="clear" size="large" routerLink="/profile" slot="end">
@@ -66,9 +66,8 @@
     </ion-col>
   </ion-row> -->
 
-  
   <ion-row class="sticky-row">
-    <ion-col size="12" class="ion-no-padding">
+    <ion-col size="12" class="ion-no-padding" size-md="10" offset-md="1">
       <ion-searchbar
         placeholder="Dishes, Restaurants and Offers"
       ></ion-searchbar>
@@ -81,15 +80,31 @@
   </ion-row>
 
   <ion-row *ngFor="let category of categories">
-    <ion-col size="10">
+    <!-- CODE BELOW -->
+
+    <ion-col size-md="10" offset-md="1">
+      <ion-item lines="none">
+        <ion-label style="margin-left: 16px"> <b>{{category}}</b> </ion-label>
+        <ion-label
+          class="ion-text-end pointer"
+          slot="end"
+          color="primary"
+          (click)="onSeeAll()"
+          >See all</ion-label
+        >
+      </ion-item>
+    </ion-col>
+    <!-- CODE ABOVE -->
+
+    <!-- <ion-col size="10" size-md="7.5" offset-md="1">
       <ion-label style="margin-left: 16px;"> <b>{{category}}</b> </ion-label>
     </ion-col>
-    <ion-col size="2">
+    <ion-col size="2" size-md="1.5">
       <ion-label class="ion-text-end" color="primary" (click)="onSeeAll()"
         >see all</ion-label
       >
-    </ion-col>
-    <ion-col size="12" >
+    </ion-col> -->
+    <ion-col size="12" offset-md="1">
       <ion-slides [options]="slideOpts">
         <ion-slide
           *ngFor="let restaurant of restaurants"
@@ -101,6 +116,4 @@
       </ion-slides>
     </ion-col>
   </ion-row>
-
-
 </ion-content>

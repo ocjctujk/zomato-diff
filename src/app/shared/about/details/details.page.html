@@ -4,78 +4,104 @@
       <div class="ion-text-wrap">{{title}}</div>
     </ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/about">
-        
-      </ion-back-button>
+      <ion-back-button defaultHref="/about"> </ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item>
-      <ion-label class="ion-text-wrap">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod libero
-        facere atque, doloribus deleniti est ipsam harum beatae hic deserunt
-        expedita consequatur molestiae distinctio voluptates dolor! Consectetur
-        odit quo sapiente!
-      </ion-label> </ion-item
-    ><ion-item>
-      <ion-label class="ion-text-wrap">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod libero
-        facere atque, doloribus deleniti est ipsam harum beatae hic deserunt
-        expedita consequatur molestiae distinctio voluptates dolor! Consectetur
-        odit quo sapiente!
-      </ion-label> </ion-item
-    ><ion-item>
-      <ion-label class="ion-text-wrap">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod libero
-        facere atque, doloribus deleniti est ipsam harum beatae hic deserunt
-        expedita consequatur molestiae distinctio voluptates dolor! Consectetur
-        odit quo sapiente!
-      </ion-label> </ion-item
-    ><ion-item>
-      <ion-label class="ion-text-wrap">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod libero
-        facere atque, doloribus deleniti est ipsam harum beatae hic deserunt
-        expedita consequatur molestiae distinctio voluptates dolor! Consectetur
-        odit quo sapiente!
-      </ion-label> </ion-item
-    ><ion-item>
-      <ion-label class="ion-text-wrap">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod libero
-        facere atque, doloribus deleniti est ipsam harum beatae hic deserunt
-        expedita consequatur molestiae distinctio voluptates dolor! Consectetur
-        odit quo sapiente!
-      </ion-label> </ion-item
-    ><ion-item>
-      <ion-label class="ion-text-wrap">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod libero
-        facere atque, doloribus deleniti est ipsam harum beatae hic deserunt
-        expedita consequatur molestiae distinctio voluptates dolor! Consectetur
-        odit quo sapiente!
-      </ion-label> </ion-item
-    ><ion-item>
-      <ion-label class="ion-text-wrap">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod libero
-        facere atque, doloribus deleniti est ipsam harum beatae hic deserunt
-        expedita consequatur molestiae distinctio voluptates dolor! Consectetur
-        odit quo sapiente!
-      </ion-label> </ion-item
-    ><ion-item>
-      <ion-label class="ion-text-wrap">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod libero
-        facere atque, doloribus deleniti est ipsam harum beatae hic deserunt
-        expedita consequatur molestiae distinctio voluptates dolor! Consectetur
-        odit quo sapiente!
-      </ion-label> </ion-item
-    ><ion-item>
-      <ion-label class="ion-text-wrap">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod libero
-        facere atque, doloribus deleniti est ipsam harum beatae hic deserunt
-        expedita consequatur molestiae distinctio voluptates dolor! Consectetur
-        odit quo sapiente!
-      </ion-label>
-    </ion-item>
-  </ion-list>
+  <ion-grid>
+    <ion-row *ngIf="detail!='dev'">
+      <ion-col size-md="10" offset-md="1">
+        <ion-list>
+          <ion-item>
+            <ion-label class="ion-text-wrap">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
+              libero facere atque, doloribus deleniti est ipsam harum beatae hic
+              deserunt expedita consequatur molestiae distinctio voluptates
+              dolor! Consectetur odit quo sapiente!
+            </ion-label> </ion-item
+          ><ion-item>
+            <ion-label class="ion-text-wrap">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
+              libero facere atque, doloribus deleniti est ipsam harum beatae hic
+              deserunt expedita consequatur molestiae distinctio voluptates
+              dolor! Consectetur odit quo sapiente!
+            </ion-label> </ion-item
+          ><ion-item>
+            <ion-label class="ion-text-wrap">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
+              libero facere atque, doloribus deleniti est ipsam harum beatae hic
+              deserunt expedita consequatur molestiae distinctio voluptates
+              dolor! Consectetur odit quo sapiente!
+            </ion-label> </ion-item
+          ><ion-item>
+            <ion-label class="ion-text-wrap">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
+              libero facere atque, doloribus deleniti est ipsam harum beatae hic
+              deserunt expedita consequatur molestiae distinctio voluptates
+              dolor! Consectetur odit quo sapiente!
+            </ion-label> </ion-item
+          ><ion-item>
+            <ion-label class="ion-text-wrap">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
+              libero facere atque, doloribus deleniti est ipsam harum beatae hic
+              deserunt expedita consequatur molestiae distinctio voluptates
+              dolor! Consectetur odit quo sapiente!
+            </ion-label> </ion-item
+          ><ion-item>
+            <ion-label class="ion-text-wrap">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
+              libero facere atque, doloribus deleniti est ipsam harum beatae hic
+              deserunt expedita consequatur molestiae distinctio voluptates
+              dolor! Consectetur odit quo sapiente!
+            </ion-label> </ion-item
+          ><ion-item>
+            <ion-label class="ion-text-wrap">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
+              libero facere atque, doloribus deleniti est ipsam harum beatae hic
+              deserunt expedita consequatur molestiae distinctio voluptates
+              dolor! Consectetur odit quo sapiente!
+            </ion-label> </ion-item
+          ><ion-item>
+            <ion-label class="ion-text-wrap">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
+              libero facere atque, doloribus deleniti est ipsam harum beatae hic
+              deserunt expedita consequatur molestiae distinctio voluptates
+              dolor! Consectetur odit quo sapiente!
+            </ion-label> </ion-item
+          ><ion-item>
+            <ion-label class="ion-text-wrap">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
+              libero facere atque, doloribus deleniti est ipsam harum beatae hic
+              deserunt expedita consequatur molestiae distinctio voluptates
+              dolor! Consectetur odit quo sapiente!
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="detail=='dev'">
+      <ion-col size-md="5" offset-md="3.5">
+        <ion-list>
+          <ion-item>
+            <ion-label> <b>Developer</b> </ion-label>
+            <ion-label slot="end">Maharshi Gohel</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label> <b>Email</b> </ion-label>
+            <ion-label slot="end">007maharshigohel@gmail.com</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label> <b>Mobile</b> </ion-label>
+            <ion-label slot="end">+91 6351452771</ion-label>
+          </ion-item>
+          <ion-button expand="block" class="ion-margin">
+            Check more apps from developer
+          </ion-button>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
